@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="novusbet">
+    <head>
+        <title>Novusbet</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap-themes/paper.css">
+        <link type="text/css" rel="stylesheet" href="stylesheets/loginSignup.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
+    </head>
+
+    <body>
+        <div ui-view="navbar"></div>
+        
+            <div class="container" id="main-container">
+            <div class="row">
+                <div ui-view="main"></div>
+            </div>
+        </div>
+
+        <div>TODO write content</div>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="javascripts/angular_modules/app.js"></script>
+        <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        
+        <script type="text/javascript" src="javascripts/angular_modules/controllers/login/authController.js"></script>
+        
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<div class="row" id="loginSignup" ng-controller="AuthController">
+    <form id="loginForm" class="col-xs-12 col-md-6 loginSignupForm" ovalidate="novalidate" ng-submit="login()">
+        <h3>Login</h3>
+        <div class="form-group">
+            <label for="username">Username: </label>
+            <input type="text" class="form-control input-lg" id="username" ng-model="loginCredentials.username" required/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input type="password" class="form-control input-lg" id="password" ng-model="loginCredentials.password" required/>
+        </div>
+        <input type="submit" class="btn-success btn-lg pull-right" value="Login"/>
+        <a redir href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Entrar com facebook</a>
+    </form>
+    <form id="signupForm" name="signupForm" class="col-xs-12 col-md-6 loginSignupForm" novalidate="novalidate" ng-submit="save()">
+        <h3>Sign up</h3>
+        <div class="form-group">
+            <label>Username: </label>
+            <input type="text" class="form-control input-lg" id="usernameSign" ng-model="signupModel.username" required />
+        </div>
+        <div class="form-group">
+            <label>Password: </label>
+            <input type="password" class="form-control input-lg" id="passwordSign" ng-model="signupModel.password" required />
+        </div>
+        <div class="form-group">
+            <label>Confirm Password: </label>
+            <input type="password" class="form-control input-lg" id="passwordConfirmSign" ng-model="confirmPassword" required />
+        </div>
+        <input type="submit" class="btn-primary btn-lg pull-right" value="Signup"/>
+    </form>
+</div>
