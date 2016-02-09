@@ -2,19 +2,26 @@ module.exports = function (app, passport) {
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
-    app.get('/', function (req, res) {
-        res.sendfile('public/index.html');
+    app.get('/failure', function (req, res) {
+        return res.json({success: false, message: 'Fazer login', data: undefined});
     });
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function (req, res) {
+        console.log('profile');
         return res.json({success: true, message: 'Apostador recuperado com sucesso', data: req.user});
+    });
+    
+    // SUCESS SIGNUP =========================
+    app.get('/sucessSignup', function (req, res) {
+        console.log('profile');
+        return res.json({success: true, message: 'Apostador cadastrado com sucesso', data: req.user});
     });
 
     // LOGOUT ==============================
     app.get('/logout', function (req, res) {
         req.logout();
-        res.json({success: true, message: 'Sessão encerrada', data: null});
+        res.json({success: true, message: 'Sessão encerrada', data: undefined});
     });
 
     // ==================================== =========================================
@@ -27,7 +34,7 @@ module.exports = function (app, passport) {
 
     app.get('/login', function (req, res) {
         //res.render('login.ejs', {message: req.flash('loginMessage')});
-        res.redirect('/');
+        res.json({success: false, message: 'Fazer login', data: undefined});
     });
 
     // process the login form
@@ -41,13 +48,13 @@ module.exports = function (app, passport) {
     // show the signup form
     app.get('/signup', function (req, res) {
         //res.render('signup.ejs', {message: req.flash('signupMessage')});
-        res.redirect('/');
+        res.status(500).json({success: false, message: 'Não foi possível realizar o cadastro', data: undefined});
     });
 
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/profile', // redirect to the secure profile section
-        failureRedirect: '/signup', // redirect back to the signup page if there is an error
+        successRedirect: '/sucessSignup', // redirect to the secure profile section
+        failureRedirect: '/failure', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
 
@@ -60,7 +67,7 @@ module.exports = function (app, passport) {
     app.get('/auth/facebook/callback',
             passport.authenticate('facebook', {
                 successRedirect: '/profile',
-                failureRedirect: '/'
+                failureRedirect: '/failure'
             }
             ));
 
@@ -73,7 +80,7 @@ module.exports = function (app, passport) {
     app.get('/auth/google/callback',
             passport.authenticate('google', {
                 successRedirect: '/profile',
-                failureRedirect: '/'
+                failureRedirect: '/failure'
             }));
 
     // =============================================================================
@@ -84,6 +91,7 @@ module.exports = function (app, passport) {
     app.get('/connect/local', function (req, res) {
         res.redirect('/');
     });
+    
     app.post('/connect/local', passport.authenticate('local-signup', {
         successRedirect: '/profile', // redirect to the secure profile section
         failureRedirect: '/connect/local', // redirect back to the signup page if there is an error
@@ -99,7 +107,7 @@ module.exports = function (app, passport) {
     app.get('/connect/facebook/callback',
             passport.authorize('facebook', {
                 successRedirect: '/profile',
-                failureRedirect: '/'
+                failureRedirect: '/failure'
             }));
 
     // google ---------------------------------
@@ -111,7 +119,7 @@ module.exports = function (app, passport) {
     app.get('/connect/google/callback',
             passport.authorize('google', {
                 successRedirect: '/profile',
-                failureRedirect: '/'
+                failureRedirect: '/failure'
             }));
 
     // =============================================================================
@@ -163,8 +171,9 @@ module.exports = function (app, passport) {
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
+        console.log('logged in');
         return next();
     }
-
-    res.redirect('/');
+    console.log('logged out');
+    res.redirect('/failure');
 }
