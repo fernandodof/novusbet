@@ -1,6 +1,10 @@
 var app = angular.module('novusbet', [
     'ui.router',
-    'novusbet.controllers.auth.AuthController'
+    'jcs-autoValidate',
+    
+    'novusbet.controllers.auth.AuthController',
+    'novusbet.validation.ValidationConfig',
+    'novusbet.directive.ConfirmPassword'
 ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {

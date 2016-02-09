@@ -2,39 +2,41 @@
     <form id="loginForm" class="col-xs-12 col-md-6 loginSignupForm" ovalidate="novalidate" ng-submit="login()">
         <h3>Login</h3>
         <div class="form-group">
-            <label for="username">Username: </label>
+            <label for="username">Nome de Usuário: </label>
             <input type="text" class="form-control input-lg" id="username" ng-model="loginCredentials.username" required/>
         </div>
         <div class="form-group">
-            <label for="password">Password: </label>
+            <label for="password">Senha: </label>
             <input type="password" class="form-control input-lg" id="password" ng-model="loginCredentials.password" required/>
         </div>
         <div class="form-group">
             <input type="submit" class="btn-success btn-lg pull-right" value="Login"/>
         </div>
+        <div id="social-butons" class="row">
+            <p id="sign-in-with">Entrar com :</p>
+            <a href="auth/facebook" class="btn social social3x facebook">
+                <i class="fa fa-facebook fa-3x"></i>       
+            </a>
+            <a href="auth/google" class="btn social social3x google-plus">
+                <i class="fa fa-google-plus fa-3x"></i>
+            </a>
+        </div>
     </form>
-    <div id="social-butons" class="row">
-        <p id="sign-in-with">Entrar com :</p>
-        <a href="auth/facebook" class="btn social social3x facebook">
-            <i class="fa fa-facebook fa-3x"></i>       
-        </a>
-        <a href="auth/google" class="btn social social3x google-plus">
-            <i class="fa fa-google-plus fa-3x"></i>
-        </a>
-    </div>
-    <form id="signupForm" name="signupForm" class="col-xs-12 col-md-6 loginSignupForm" novalidate="novalidate" ng-submit="save()">
-        <h3>Sign up</h3>
+    <form id="signupForm" name="signupForm" class="col-xs-12 col-md-6 loginSignupForm" novalidate="novalidate" ng-submit="signupFomm.$valid && signup()">
+        <h3>Cadastre-se</h3>
         <div class="form-group">
-            <label>Username: </label>
+            <label>Nome de Usuário: </label>
             <input type="text" class="form-control input-lg" id="usernameSign" ng-model="signupModel.username" required />
         </div>
         <div class="form-group">
-            <label>Password: </label>
-            <input type="password" class="form-control input-lg" id="passwordSign" ng-model="signupModel.password" required />
+            <label>Senha: </label>
+            <input type="password" class="form-control input-lg" id="passwordSign" ng-model="signupModel.password" ng-minlength="6" 
+                    ng-maxlength="30" required />
         </div>
         <div class="form-group">
-            <label>Confirm Password: </label>
-            <input type="password" class="form-control input-lg" id="passwordConfirmSign" ng-model="confirmPassword" required />
+            <label>Confirme a senha: </label>
+            <input type="password" class="form-control input-lg" id="passwordConfirmSign" ng-model="signupModel.confirmPassword" ng-minlength="6" 
+                    ng-maxlength="30" confirm-password="signupModel.password" required />
         </div>
         <div class="form-group">
             <input type="submit" class="btn-primary btn-lg pull-right" value="Signup"/>
