@@ -1,54 +1,77 @@
-//var express = require('express');
-//var router = express.Router();
-//
-//router.route('/profile')
-//    .get(function(req,res,next){
-//        res.json(success: true, message: 'Apostador recuperado com sucesso', data: req.apostador);
-//    });
-//
-//router.route('/logout')
-//    .get(function(req,res,next){
-//        req.logout();
-//        res.json(success: true, message: 'Sessão encerrada', data: null);
-//    });
+module.exports = function (app, passport) {
+// normal routes ===============================================================
 
-module.exports = function(app, passport) {
-    
-	// PROFILE SECTION =========================
-	app.get('/profile', isLoggedIn, function(req, res) {
-		return res.json({success: true, message: 'Apostador recuperado com sucesso', data: req.apostador});
-	});
+    // show the home page (will also have our login links)
+    app.get('/', function (req, res) {
+        res.sendfile('public/index.html');
+    });
 
-	// LOGOUT ==============================
-	app.get('/logout', function(req, res) {
+    // PROFILE SECTION =========================
+    app.get('/profile', isLoggedIn, function (req, res) {
+        return res.json({success: true, message: 'Apostador recuperado com sucesso', data: req.user});
+    });
+
+    // LOGOUT ==============================
+    app.get('/logout', function (req, res) {
         req.logout();
         res.json({success: true, message: 'Sessão encerrada', data: null});
-	});
+    });
 
-    // =============================================================================
+    // ==================================== =========================================
     // AUTHENTICATE (FIRST LOGIN) ==================================================
     // =============================================================================
 
-	// facebook -------------------------------
+    // locally --------------------------------
+    // LOGIN ===============================
+    // show the login form
 
-	// send to facebook to do the authentication
-    app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+    app.get('/login', function (req, res) {
+        //res.render('login.ejs', {message: req.flash('loginMessage')});
+        res.redirect('/');
+    });
 
-	// handle the callback after facebook has authenticated the user
-	app.get('/auth/facebook/callback',
-		passport.authenticate('facebook', {
-	       successRedirect : '/profile',
-	       failureRedirect : '/'
-		}
-    ));
-    
-    
-}
+    // process the login form
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect: '/profile', // redirect to the secure profile section
+        failureRedirect: '/login', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages
+    }));
+
+    // SIGNUP =================================
+    // show the signup form
+    app.get('/signup', function (req, res) {
+        //res.render('signup.ejs', {message: req.flash('signupMessage')});
+        res.redirect('/');
+    });
+
+    // process the signup form
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect: '/profile', // redirect to the secure profile section
+        failureRedirect: '/signup', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages
+    }));
+
+    // facebook -------------------------------
+
+    // send to facebook to do the authentication
+    app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email, public_profile']}));
+
+    // handle the callback after facebook has authenticated the user
+    app.get('/auth/facebook/callback',
+            passport.authenticate('facebook', {
+                successRedirect: '/profile',
+                failureRedirect: '/'
+            }
+            ));
+
+
+};
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated())
-		return next();
+    if (req.isAuthenticated()) {
+        return next();
+    }
 
-	res.redirect('/');
+    res.redirect('/');
 }

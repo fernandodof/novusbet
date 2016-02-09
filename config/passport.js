@@ -1,94 +1,9 @@
-//var express = require('express');
-//var router = express.Router();
-//var passport = require('passport');
-//var FacebookStrategy = require('passport-facebook').Strategy;
-//var request = require('request');
-
-//var config = require('../config.js');
-//var Apostador = require('../models/apostador');
-//
-//var auth = require('../auth/authValidations');
-//
-//router.route('/facebook')
-//    .get(function(req,res,next){
-//        facebookAuth();  
-//
-//        console.log('/facebook');
-//        res.send('facebook');
-//    });
-
-//router.route('/facebook')
-//    .get(function(req, res) {
-//        var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name'];
-//        var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
-//        var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + fields.join(',');
-//
-//        var params = {
-//            code: req.query.code,
-//            client_id: config.facebook.clientId,
-//            client_secret: config.facebook.clientSecret,
-//            redirect_uri: config.facebook.callbackURL
-//        };
-//
-//        console.log(params);
-//        // Step 1. Exchange authorization code for access token.
-//        request.get({ url: accessTokenUrl, qs: params, json: true }, function(err, response, accessToken) {
-//            if (response.statusCode !== 200) {
-//            return res.status(500).send({ message: accessToken.error.message });
-//        }
-//            
-//        // Step 2. Retrieve profile information about the current apostador.
-//        request.get({ url: graphApiUrl, qs: accessToken, json: true }, function(err, response, profile) {
-//            if (response.statusCode !== 200) {
-//                return res.status(500).send({ message: profile.error.message });
-//            }
-//            if (req.headers.authorization) {
-//                Apostador.findOne({ facebook: profile.id }, function(err, existingApostador) {
-//                    if (existingApostador) {
-//                        return res.status(409).send({ message: 'There is already a Facebook account that belongs to you' });
-//                    }
-//                    var token = req.headers.authorization.split(' ')[1];
-//                    var payload = jwt.decode(token, config.TOKEN_SECRET);
-//                    Apostador.findById(payload.sub, function(err, apostador) {
-//                        if (!apostador) {
-//                            return res.status(400).send({ message: 'Apostador não encontrado' });
-//                        }
-//                        apostador.facebook = profile.id;
-//                        apostador.picture = apostador.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
-//                        apostador.displayName = apostador.displayName || profile.name;
-//                        apostador.save(function() {
-//                            var token = createJWT(user);
-//                            res.send({ token: token });
-//                        });
-//                    });
-//                });
-//            } else {
-//                // Step 3b. Create a new user account or return an existing one.
-//                Apostador.findOne({ facebook: profile.id }, function(err, existingApostador) {
-//                    if (existingApostador) {
-//                        var token = createJWT(existingApostador);
-//                        return res.send({ token: token });
-//                    }
-//                    var apostador = new Apostador();
-//                    apostador.facebook = profile.id;
-//                    apostador.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
-//                    apostador.displayName = profile.name;
-//                    apostador.save(function() {
-//                        var token = createJWT(user);
-//                        res.send({ token: token });
-//                    });
-//                });
-//            }
-//        });
-//    });
-//});
-
 // load all the things we need
 var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 
-var config = require('../config/config.js');
+var config = require('../config/config');
 var Apostador = require('../models/apostador');
 
 module.exports = function(passport) {
@@ -210,6 +125,7 @@ module.exports = function(passport) {
         clientID        : config.facebook.clientId,
         clientSecret    : config.facebook.clientSecret,
         callbackURL     : config.facebook.callbackURL,
+        profileFields: ['id', 'email', 'displayName', 'gender', 'link', 'locale', 'name'],
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a apostador is logged in or not)
 
     },
@@ -220,7 +136,7 @@ module.exports = function(passport) {
 
             // check if the apostador is already logged in
             if (!req.apostador) {
-
+                console.log('!apostador');
                 Apostador.findOne({ 'facebook.id' : profile.id }, function(err, apostador) {
                     if (err)
                         return done(err);
@@ -242,17 +158,20 @@ module.exports = function(passport) {
 
                         return done(null, apostador); // apostador found, return that apostador
                     } else {
+                        console.log(profile);
                         // if there is no apostador, create them
                         var newApostador            = new Apostador();
-
+                        
                         newApostador.facebook.id    = profile.id;
                         newApostador.facebook.token = token;
                         newApostador.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                         newApostador.facebook.email = profile.emails[0].value;
 
                         newApostador.save(function(err) {
-                            if (err)
+                            if (err){
+                                console.log(err);
                                 throw err;
+                            }
                             return done(null, newApostador);
                         });
                     }

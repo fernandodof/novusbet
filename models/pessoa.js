@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
-var options = { discriminatorKey: 'kind' };
+//var options = { discriminatorKey: 'kind' };
 
 var pessoaSchema = new mongoose.Schema({
     nome: {type: String, required: true},
@@ -12,7 +12,7 @@ var pessoaSchema = new mongoose.Schema({
     nascimento: Date,
     ativa: {type: Boolean, default: true}
     
-}, options);
+});
 
 pessoaSchema.pre('save', function(next) {
     var pessoa = this;

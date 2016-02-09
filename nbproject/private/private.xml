@@ -4,14 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/fernando/NetBeansProjects/novusbet/public/templates/loginSignup.html</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/config/passport.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/templates/profile.html</file>
             <file>file:/home/fernando/NetBeansProjects/novusbet/public/index.html</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/public/javascripts/angular_modules/app.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/models/pessoa.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/models/apostador.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/routes/auth.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/config/config.js</file>
             <file>file:/home/fernando/NetBeansProjects/novusbet/public/javascripts/angular_modules/controllers/login/authController.js</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/package.json</file>
             <file>file:/home/fernando/NetBeansProjects/novusbet/public/templates/navbar.html</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/bower.json</file>
             <file>file:/home/fernando/NetBeansProjects/novusbet/app.js</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/public/stylesheets/loginSignup.css</file>
         </group>
     </open-files>
 </project-private>
