@@ -9,9 +9,19 @@
             <label for="password">Password: </label>
             <input type="password" class="form-control input-lg" id="password" ng-model="loginCredentials.password" required/>
         </div>
-        <input type="submit" class="btn-success btn-lg pull-right" value="Login"/>
-        <a redir href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Entrar com facebook</a>
+        <div class="form-group">
+            <input type="submit" class="btn-success btn-lg pull-right" value="Login"/>
+        </div>
     </form>
+    <div id="social-butons" class="row">
+        <p id="sign-in-with">Entrar com :</p>
+        <a href="auth/facebook" class="btn social social3x facebook">
+            <i class="fa fa-facebook fa-3x"></i>       
+        </a>
+        <a href="auth/google" class="btn social social3x google-plus">
+            <i class="fa fa-google-plus fa-3x"></i>
+        </a>
+    </div>
     <form id="signupForm" name="signupForm" class="col-xs-12 col-md-6 loginSignupForm" novalidate="novalidate" ng-submit="save()">
         <h3>Sign up</h3>
         <div class="form-group">
@@ -26,6 +36,8 @@
             <label>Confirm Password: </label>
             <input type="password" class="form-control input-lg" id="passwordConfirmSign" ng-model="confirmPassword" required />
         </div>
-        <input type="submit" class="btn-primary btn-lg pull-right" value="Signup"/>
+        <div class="form-group">
+            <input type="submit" class="btn-primary btn-lg pull-right" value="Signup"/>
+        </div>
     </form>
 </div>

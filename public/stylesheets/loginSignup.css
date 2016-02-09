@@ -22,8 +22,10 @@
     }
 }
 
-#facebook-button{
-    margin-top: 60px;
-    text-transform: none;
-    float: left;
+#social-butons{
+    margin-top: 80px;
+}
+
+#sign-in-with{
+    font-size: 20px;
 }

@@ -86,9 +86,9 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
 
                 //  If we're logged in, we're connecting a new local account.
-                if(req.apostador) {
-                    var apostador       = req.apostador;
-                    apostador.local.email    = email;
+                if(req.user) {
+                    var apostador = req.user;
+                    apostador.local.email = email;
                     apostador.local.password = apostador.generateHash(password);
                     apostador.save(function(err) {
                         if (err)
@@ -135,8 +135,7 @@ module.exports = function(passport) {
         process.nextTick(function() {
 
             // check if the apostador is already logged in
-            if (!req.apostador) {
-                console.log('!apostador');
+            if (!req.user) {
                 Apostador.findOne({ 'facebook.id' : profile.id }, function(err, apostador) {
                     if (err)
                         return done(err);
@@ -158,7 +157,6 @@ module.exports = function(passport) {
 
                         return done(null, apostador); // apostador found, return that apostador
                     } else {
-                        console.log(profile);
                         // if there is no apostador, create them
                         var newApostador            = new Apostador();
                         
@@ -179,7 +177,7 @@ module.exports = function(passport) {
 
             } else {
                 // apostador already exists and is logged in, we have to link accounts
-                var apostador            = req.apostador; // pull the apostador out of the session
+                var apostador            = req.user; // pull the apostador out of the session
 
                 apostador.facebook.id    = profile.id;
                 apostador.facebook.token = token;
@@ -214,7 +212,7 @@ module.exports = function(passport) {
         process.nextTick(function() {
 
             // check if the apostador is already logged in
-            if (!req.apostador) {
+            if (!req.user) {
 
                 Apostador.findOne({ 'google.id' : profile.id }, function(err, apostador) {
                     if (err)
@@ -237,11 +235,11 @@ module.exports = function(passport) {
 
                         return done(null, apostador);
                     } else {
-                        var newApostador          = new Apostador();
+                        var newApostador = new Apostador();
 
-                        newApostador.google.id    = profile.id;
+                        newApostador.google.id  = profile.id;
                         newApostador.google.token = token;
-                        newApostador.google.name  = profile.displayName;
+                        newApostador.google.name = profile.displayName;
                         newApostador.google.email = profile.emails[0].value; // pull the first email
 
                         newApostador.save(function(err) {
@@ -254,11 +252,11 @@ module.exports = function(passport) {
 
             } else {
                 // apostador already exists and is logged in, we have to link accounts
-                var apostador               = req.apostador; // pull the apostador out of the session
+                var apostador = req.user; // pull the apostador out of the session
 
-                apostador.google.id    = profile.id;
+                apostador.google.id = profile.id;
                 apostador.google.token = token;
-                apostador.google.name  = profile.displayName;
+                apostador.google.name = profile.displayName;
                 apostador.google.email = profile.emails[0].value; // pull the first email
 
                 apostador.save(function(err) {
