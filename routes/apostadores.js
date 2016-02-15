@@ -84,6 +84,23 @@ router.route('/:id')
     .delete(function(req,res,next){
         
     });
+    
+    router.route('/email/:email')
+        .get(function(req,res,next){
+           
+            Apostador.findOne({'local.email': req.params.email}, function(err, apostador){
+                if(err){
+                    console.log(err);
+                    return res.status(500).json({success: false, message: 'Ocorreu um erro ao pesquisar o apostador', data: undefined});
+                }else{
+                    if(apostador){
+                        return res.status(200).json({success: true, message: 'Apostador com este email já cadastrado', data: true});
+                    }else{
+                        return res.status(200).json({success: false, message: 'Apostador com este email não existe', data: false});
+                    }
+                }
+            });
+        });
 
 module.exports = router;
 

@@ -4,7 +4,8 @@ var app = angular.module('novusbet', [
     
     'novusbet.controllers.auth.AuthController',
     'novusbet.validation.ValidationConfig',
-    'novusbet.directive.ConfirmPassword'
+    'novusbet.directives.ConfirmPassword',
+    'novusbet.directives.UniqueEmailChecker'
 ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {

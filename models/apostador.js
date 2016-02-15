@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs');
 
 var apostadorSchema = new mongoose.Schema({
     local            : {
-        email        : String,
+        email        : {type: String, unique: true},
         password     : String
     },
     facebook         : {

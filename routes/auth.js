@@ -3,7 +3,7 @@ module.exports = function (app, passport) {
 
     // show the home page (will also have our login links)
     app.get('/failure', function (req, res) {
-        return res.json({success: false, message: 'Fazer login', data: undefined});
+        return res.json({success: false, message: 'Email já cadastrado', data: undefined});
     });
 
     // PROFILE SECTION =========================

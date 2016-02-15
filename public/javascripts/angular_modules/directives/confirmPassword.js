@@ -1,4 +1,4 @@
-angular.module('novusbet.directive.ConfirmPassword', []).directive('confirmPassword',function (defaultErrorMessageResolver){
+angular.module('novusbet.directives.ConfirmPassword', []).directive('confirmPassword',function (defaultErrorMessageResolver){
     defaultErrorMessageResolver.getErrorMessages().then(function (errorMessages) {
           errorMessages['confirmPassword'] = 'Senhas não conferem';
         });

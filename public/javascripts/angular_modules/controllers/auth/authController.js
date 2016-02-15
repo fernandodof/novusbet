@@ -21,4 +21,14 @@ angular.module('novusbet.controllers.auth.AuthController', []).controller('AuthC
             console.log(response);
         });
     };
+    
+    $scope.checkEmail = function (){
+        $http.get('apostadores/email/'+$scope.signupModel.email, {
+            
+        }).success(function(response){
+            console.log(response);
+        }).error(function(response){
+            console.log(response);
+        });
+    };
 });
