@@ -51,9 +51,7 @@ var apostadorSchema = new mongoose.Schema({
 //});
 
 apostadorSchema.methods.validPassword = function(password, done) {
-  bcrypt.compare(password, this.password, function(err, isMatch) {
-    done(err, isMatch);
-  });
+    return bcrypt.compareSync(password, this.local.password);
 };
 
 apostadorSchema.methods.generateHash = function(password) {

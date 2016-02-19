@@ -3,9 +3,13 @@ var app = angular.module('novusbet', [
     'jcs-autoValidate',
     
     'novusbet.controllers.auth.AuthController',
+    
     'novusbet.validation.ValidationConfig',
+    
     'novusbet.directives.ConfirmPassword',
-    'novusbet.directives.UniqueEmailChecker'
+    'novusbet.directives.UniqueEmailChecker',
+    
+    'novusbet.services.auth.AuthService'
 ]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -18,6 +22,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                         controller: 'AuthController'
                     },
                     'navbar':{
+                        templateUrl: 'templates/navbar.html'
+                    }
+                }
+            }).state('dashboard',{
+                url: '/dashboard',
+                views:{
+                    'main' : {
+                        templateUrl: 'templates/dashboard.html',
+                        controller: 'DashboardController'
+                    },
+                    'navbar' : {
                         templateUrl: 'templates/navbar.html'
                     }
                 }

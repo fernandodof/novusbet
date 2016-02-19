@@ -1,34 +1,40 @@
-angular.module('novusbet.controllers.auth.AuthController', []).controller('AuthController', function ($scope, $state, $http) {
+angular.module('novusbet.controllers.auth.AuthController', []).controller('AuthController', function ($scope, $state, AuthService) {
     $scope.signupModel = {};
+    $scope.loginModel = {};
 
     $scope.signup = function () {
-        $http.post('/signup', {
-            email: $scope.signupModel.email,
-            password: $scope.signupModel.password
-        }).success(function (response) {
-            console.log(response);
-        }).error(function (response) {
-            console.log(response);
-        });
+        AuthService.signUp($scope.signupModel.email, $scope.signupModel.password)
+            .success(function (response) {
+                console.log(response);
+            }).error(function (response) {
+                console.log(response);
+            });
     };
     
     $scope.logout = function (){
-        $http.get('logout', {
-            
-        }).success(function(response){
-            console.log(response);
-        }).error(function (response){
-            console.log(response);
-        });
+        AuthService.logout()
+            .success(function(response){
+                console.log(response);
+            }).error(function (response){
+                console.log(response);
+            });
     };
     
     $scope.checkEmail = function (){
-        $http.get('apostadores/email/'+$scope.signupModel.email, {
-            
-        }).success(function(response){
-            console.log(response);
-        }).error(function(response){
-            console.log(response);
-        });
+        AuthService.checkEmail()
+            .success(function(response){
+                console.log(response);
+            }).error(function(response){
+                console.log(response);
+            });
+    };
+    
+    $scope.login = function (){
+        AuthService.login($scope.loginModel.email, $scope.loginModel.password)
+            .success(function(response){
+                console.log(response);
+            }).error(function(response){
+                console.log(response);
+            });
     };
 });
