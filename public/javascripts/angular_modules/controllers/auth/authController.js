@@ -33,6 +33,9 @@ angular.module('novusbet.controllers.auth.AuthController', []).controller('AuthC
         AuthService.login($scope.loginModel.email, $scope.loginModel.password)
             .success(function(response){
                 console.log(response);
+                if(response.success){
+                    $state.go('dashboard');
+                }
             }).error(function(response){
                 console.log(response);
             });

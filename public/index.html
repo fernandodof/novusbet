@@ -10,6 +10,7 @@
         <link type="text/css" rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <link type="text/css" rel="stylesheet" href="stylesheets/social-buttons.css">
         <link type="text/css" rel="stylesheet" href="stylesheets/global.css">
+        <link type="text/css" rel="stylesheet" href="stylesheets/sideMenuApostador.css">
     </head>
 
     <body>
@@ -17,6 +18,7 @@
         
             <div class="container" id="main-container">
             <div class="row">
+                <div ui-view="sidebar"></div>
                 <div ui-view="main"></div>
             </div>
         </div>
@@ -28,6 +30,7 @@
         <script type="text/javascript" src="bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
         
         <script type="text/javascript" src="javascripts/angular_modules/controllers/auth/authController.js"></script>
+        <script type="text/javascript" src="javascripts/angular_modules/controllers/dashboard/dashboardController.js"></script>
         <script type="text/javascript" src="javascripts/angular_modules/validations/validation-config.js"></script>
         <script type="text/javascript" src="javascripts/angular_modules/directives/confirmPassword.js"></script>
         <script type="text/javascript" src="javascripts/angular_modules/directives/uniqueEmailChecker.js"></script>        

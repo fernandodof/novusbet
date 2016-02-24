@@ -3,6 +3,7 @@ var app = angular.module('novusbet', [
     'jcs-autoValidate',
     
     'novusbet.controllers.auth.AuthController',
+    'novusbet.controller.DashboardController',
     
     'novusbet.validation.ValidationConfig',
     
@@ -34,6 +35,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     },
                     'navbar' : {
                         templateUrl: 'templates/navbar.html'
+                    },
+                    'sidebar':{
+                        templateUrl: 'templates/sideMenuApostador.html'
                     }
                 }
             });

@@ -17,6 +17,9 @@ angular.module('novusbet.services.auth.AuthService',[]).service('AuthService', f
                 email: email,
                 password: password
             });
+        },
+        test:function(){
+            return $http.get('http://192.168.25.179:8080/tcc-services/rest/georef/arquivos', {});
         }
     };
     
