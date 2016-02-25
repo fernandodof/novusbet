@@ -1,4 +1,4 @@
-angular.module('novusbet.directives.UniqueEmailChecker', []).directive('uniqueEmailChecker', [
+angular.module('novusbet.directives.UniqueEmailCheckerDirective', []).directive('uniqueEmailCheckerDirective', [
     '$q',
     '$http',
     function ($q, $http) {

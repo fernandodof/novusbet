@@ -7,8 +7,8 @@ var app = angular.module('novusbet', [
     
     'novusbet.validation.ValidationConfig',
     
-    'novusbet.directives.ConfirmPassword',
-    'novusbet.directives.UniqueEmailChecker',
+    'novusbet.directives.ConfirmPasswordDirective',
+    'novusbet.directives.UniqueEmailCheckerDirective',
     
     'novusbet.services.auth.AuthService'
 ]);
@@ -36,6 +36,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     'navbar' : {
                         templateUrl: 'templates/navbar.html'
                     },
+                    'sidebar':{
+                        templateUrl: 'templates/sideMenuApostador.html'
+                    }
+                }
+            }).state('dashboard.sidebar', {
+                url : '/sidebar',
+                views:{
                     'sidebar':{
                         templateUrl: 'templates/sideMenuApostador.html'
                     }
