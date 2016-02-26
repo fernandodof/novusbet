@@ -20,6 +20,15 @@ angular.module('novusbet.controllers.auth.AuthController', []).controller('AuthC
             });
     };
     
+    $scope.test = function (){
+        AuthService.test()
+            .success(function(response){
+                console.log(response);
+            }).error(function (response){
+                console.log(response);
+            });
+    };
+    
     $scope.checkEmail = function (){
         AuthService.checkEmail()
             .success(function(response){

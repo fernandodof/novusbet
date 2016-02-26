@@ -35,16 +35,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     },
                     'navbar' : {
                         templateUrl: 'templates/navbar.html'
-                    },
-                    'sidebar':{
-                        templateUrl: 'templates/sideMenuApostador.html'
-                    }
-                }
-            }).state('dashboard.sidebar', {
-                url : '/sidebar',
-                views:{
-                    'sidebar':{
-                        templateUrl: 'templates/sideMenuApostador.html'
                     }
                 }
             });
