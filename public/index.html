@@ -4,38 +4,42 @@
         <title>Novusbet</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap-themes/paper.css">
-        <!--<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
-        <link type="text/css" rel="stylesheet" href="stylesheets/loginSignup.css">
-        <link type="text/css" rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-        <link type="text/css" rel="stylesheet" href="stylesheets/social-buttons.css">
+        <link type="text/css" rel="stylesheet" href="libs/gentella/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="libs/gentella/fonts/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="libs/gentella/css/animate.min.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/ngFloatingLabels/src/ng-floating-labels.css">
         <link type="text/css" rel="stylesheet" href="stylesheets/global.css">
-        <link type="text/css" rel="stylesheet" href="stylesheets/sideMenuApostador.css">
+        <link type="text/css" rel="stylesheet" href="libs/gentella/css/icheck/flat/green.css">
+
     </head>
 
     <body>
         <div ui-view="navbar"></div>
-        
-            <div class="container" id="main-container">
-            <div class="row">
-                <!--<div ui-view="sidebar"></div>-->
-                <div ui-view="main"></div>
-            </div>
+
+        <div ui-view="main"></div>
+        <div class="row">
+            <!--<div ui-view="sidebar"></div>-->
         </div>
-        
-        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+
+        <script type="text/javascript" src="libs/gentella/js/jquery.min.js"></script>
         <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-        <script type="text/javascript" src="javascripts/angular_modules/app.js"></script>
+        <script type="text/javascript" src="app/app.modules.js"></script>
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
+        <script type="text/javascript" src="app/app.routes.js"></script>
         
-        <script type="text/javascript" src="javascripts/angular_modules/controllers/auth/authController.js"></script>
-        <script type="text/javascript" src="javascripts/angular_modules/controllers/dashboard/dashboardController.js"></script>
-        <script type="text/javascript" src="javascripts/angular_modules/validations/validation-config.js"></script>
-        <script type="text/javascript" src="javascripts/angular_modules/directives/confirmPasswordDirective.js"></script>
-        <script type="text/javascript" src="javascripts/angular_modules/directives/uniqueEmailCheckerDirective.js"></script>        
-        <script type="text/javascript" src="javascripts/angular_modules/services/auth/authService.js"></script>        
+        <!--validations-->
+        <script type="text/javascript" src="app/shared/validation/validation-config.js"></script>
         
+        <!--auth-->
+        <script type="text/javascript" src="app/components/auth/authController.js"></script>
+        <script type="text/javascript" src="app/components/auth/confirmPasswordDirective.js"></script>
+        <script type="text/javascript" src="app/components/auth/uniqueEmailCheckerDirective.js"></script>   
+        <script type="text/javascript" src="app/components/auth/authService.js"></script>        
+        
+        <!--Dashboard-->
+        <script type="text/javascript" src="app/components/dashboard/dashboardController.js"></script>
+
     </body>
 </html>

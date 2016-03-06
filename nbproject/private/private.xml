@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/public/templates/loginSignup.html</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/config/passport.js</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/public/javascripts/angular_modules/controllers/auth/authController.js</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/public/javascripts/angular_modules/directives/confirmPassword.js</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/public/index.html</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/models/apostador.js</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/routes/auth.js</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/public/javascripts/angular_modules/app.js</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/public/templates/navbar.html</file>
-            <file>file:/home/fernando/NetBeansProjects/novusbet/app.js</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
