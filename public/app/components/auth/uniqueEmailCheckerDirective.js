@@ -8,7 +8,6 @@ angular.module('novusbet.components.auth.UniqueEmailCheckerDirective', []).direc
             link: function (scope, elm, attrs, ctrl) {
                 ctrl.$asyncValidators.uniqueEmailChecker = function (modelValue, viewValue) {
                     var defer = $q.defer();
-                    console.log(viewValue);
 
                     $http.get('apostadores/email/' + viewValue, {
                     }).success(function (response) {

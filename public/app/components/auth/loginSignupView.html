@@ -1,4 +1,4 @@
-<div id="wrapper" class="col-md-4 col-md-offset-4">
+<div id="wrapper" class="loginSignup">
     <div id="login" class="animated fadeInLeft" ng-show="!animatedLogin">
         <form id="loginForm" novalidate="novalidate" ng-submit="ctrl.login()">
             <h2 class="text-center">Login</h2>
@@ -13,15 +13,21 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success pull-right" id="loginButton">Entrar <span class="fa fa-sign-in"></span></button>
-                <a class="reset_pass" href="#">Esqueceu a senha?</a>
+                <a class="reset_pass" href="#">Esqueceu a senha? </a>
             </div>
             <div class="clearfix"></div>
-            <div class="separator">
-                <p class="change_link" ng-click="animatedLogin = !animatedLogin">Novo por aqui?
-                    <a> Criar conta </a>
-                </p>
-            </div>
+            <div class="separator"></div>
+            <a href="#" ng-click="animatedLogin = !animatedLogin">Criar conta </a>
         </form>
+        <div id="social-butons">
+            <p id="sign-in-with">Entrar com: </p>
+            <a href="auth/facebook" class="btn social social2x facebook">
+                <i class="fa fa-facebook fa-2x"></i>       
+            </a>
+            <a href="auth/google" class="btn social social2x google-plus">
+                <i class="fa fa-google-plus fa-2x"></i>
+            </a>
+        </div>
     </div>
     <div id="register" class="animated fadeInLeft" ng-show="animatedLogin">
 
@@ -30,30 +36,40 @@
             <div class="form-group">
                 <label for="emailSignup" class="animated fadeInUp" ng-show="ctrl.signupModel.email">Email: </label>
                 <input type="email" class="form-control" id="emailSignup" placeholder="Email" ng-model="ctrl.signupModel.email" 
-                       ng-model-options='{updateOn: blur, debounce: 0, allowInvalid: true}' required unique-email-checker/>
+                       ng-model-options='{
+                                   updateOn: blur, debounce: 0, allowInvalid: true}' required unique-email-checker/>
             </div>
             <div class="form-group">
                 <label for="passwordSignup" class="animated fadeInUp" ng-show="ctrl.signupModel.password">Senha: </label>
                 <input type="password" class="form-control" id="passwordSignup" placeholder="Password" ng-model="ctrl.signupModel.password" 
-                       ng-minlength="6" ng-maxlength="30" ng-model-options="{allowInvalid: true}" required />
+                       ng-minlength="6" ng-maxlength="30" ng-model-options="{
+                                   allowInvalid: true}" required />
             </div>
             <div class="form-group">
                 <label for="passwordConfirmSignup" class="animated fadeInUp" ng-show="ctrl.signupModel.confirmPassword">Confirme a senha: </label>
                 <input type="password" class="form-control" id="passwordConfirmSignup" placeholder="Confirme a senha" 
                        ng-model="ctrl.signupModel.confirmPassword" ng-minlength="6" 
-                       ng-maxlength="30" ng-model-options="{allowInvalid: true}" confirm-password="ctrl.signupModel.password" required />
+                       ng-maxlength="30" ng-model-options="{
+                                   allowInvalid: true
+                               }" confirm-password="ctrl.signupModel.password" required />
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary pull-right" id="signUpButton" ng-disabled="signupForm.$invalid" 
                         ng-class="signupForm.$invalid ? 'disabled' : ''">Cadastrar</button>
             </div>
             <div class="clearfix"></div>
-            <div class="separator">
-                <p class="change_link" ng-click="animatedLogin = !animatedLogin">Já cadastrado ?
-                    <a>Entrar</a>
-                </p>
-            </div>
+            <div class="separator"></div>
+            <a href="#" ng-click="animatedLogin = !animatedLogin">Entrar</a>
         </form>
-        <!-- form -->
+        <div id="social-butons">
+            <p id="sign-in-with">Entrar com :</p>
+            <a href="auth/facebook" class="btn social social2x facebook">
+                <i class="fa fa-facebook fa-2x"></i>       
+            </a>
+            <a href="auth/google" class="btn social social2x google-plus">
+                <i class="fa fa-google-plus fa-2x"></i>
+            </a>
+        </div>
     </div>
+
 </div>

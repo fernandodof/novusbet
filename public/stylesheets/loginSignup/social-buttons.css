@@ -9,10 +9,19 @@
     padding:17px;
     color: gray;
 }
+.social i{
+    margin-top: -5px;
+    margin-left: -3px;
+}
 
 .social3x{
     width:72px;
     height:72px;
+}
+
+.social2x{
+    width:60px;
+    height:48px;
 }
 
 .google-plus:hover{

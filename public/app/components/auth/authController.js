@@ -1,4 +1,4 @@
-angular.module('novusbet.components.auth.AuthController', []).controller('AuthController', function ($state, AuthService) {
+angular.module('novusbet.components.auth.AuthController', []).controller('AuthController', function ($state, AuthService, $rootScope) {
     
     var ctrl = this;
     
@@ -43,6 +43,7 @@ angular.module('novusbet.components.auth.AuthController', []).controller('AuthCo
         AuthService.login(ctrl.loginModel.email, ctrl.loginModel.password)
             .success(function(response){
                 console.log(response);
+                $rootScope.loggedin = true;
                 if(response.success){
                     $state.go('dashboard');
                 }

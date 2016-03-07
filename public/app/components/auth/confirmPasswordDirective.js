@@ -10,7 +10,6 @@ angular.module('novusbet.components.auth.ConfirmPasswordDirective', []).directiv
             confirmPassword: '=confirmPassword'
         },
         link: function (scope, element, attributes, ngModel) {
-            console.log("teste");
             ngModel.$validators.confirmPassword = function (modelValue) {
                 return modelValue === scope.confirmPassword;
             };

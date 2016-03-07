@@ -6,20 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link type="text/css" rel="stylesheet" href="libs/gentella/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="libs/gentella/fonts/css/font-awesome.min.css">
-        <link type="text/css" rel="stylesheet" href="libs/gentella/css/animate.min.css">
-        <link type="text/css" rel="stylesheet" href="bower_components/ngFloatingLabels/src/ng-floating-labels.css">
-        <link type="text/css" rel="stylesheet" href="stylesheets/global.css">
+        <link type="text/css" rel="stylesheet" href="libs/gentella/css/custom.css">
         <link type="text/css" rel="stylesheet" href="libs/gentella/css/icheck/flat/green.css">
+        <link type="text/css" rel="stylesheet" href="libs/gentella/css/animate.min.css">
+        <link type="text/css" rel="stylesheet" href="stylesheets/loginSignup/social-buttons.css">
+        <link type="text/css" rel="stylesheet" href="stylesheets/loginSignup/loginSignup.css">
+        <link type="text/css" rel="stylesheet" href="stylesheets/global.css">
 
     </head>
 
-    <body>
-        <div ui-view="navbar"></div>
+    <body class="nav-md" ng-class="loggedin ? '' : 'loggedinBackground' ">
 
         <div ui-view="main"></div>
-        <div class="row">
-            <!--<div ui-view="sidebar"></div>-->
-        </div>
 
         <script type="text/javascript" src="libs/gentella/js/jquery.min.js"></script>
         <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -28,18 +26,17 @@
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
         <script type="text/javascript" src="app/app.routes.js"></script>
-        
+
         <!--validations-->
         <script type="text/javascript" src="app/shared/validation/validation-config.js"></script>
-        
+
         <!--auth-->
         <script type="text/javascript" src="app/components/auth/authController.js"></script>
         <script type="text/javascript" src="app/components/auth/confirmPasswordDirective.js"></script>
         <script type="text/javascript" src="app/components/auth/uniqueEmailCheckerDirective.js"></script>   
         <script type="text/javascript" src="app/components/auth/authService.js"></script>        
-        
+
         <!--Dashboard-->
         <script type="text/javascript" src="app/components/dashboard/dashboardController.js"></script>
-
     </body>
 </html>
