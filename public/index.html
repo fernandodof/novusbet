@@ -4,23 +4,28 @@
         <title>Novusbet</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link type="text/css" rel="stylesheet" href="libs/gentella/css/bootstrap.min.css">
-        <link type="text/css" rel="stylesheet" href="libs/gentella/fonts/css/font-awesome.min.css">
-        <link type="text/css" rel="stylesheet" href="libs/gentella/css/custom.css">
-        <link type="text/css" rel="stylesheet" href="libs/gentella/css/icheck/flat/green.css">
-        <link type="text/css" rel="stylesheet" href="libs/gentella/css/animate.min.css">
-        <link type="text/css" rel="stylesheet" href="stylesheets/loginSignup/social-buttons.css">
-        <link type="text/css" rel="stylesheet" href="stylesheets/loginSignup/loginSignup.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <!--<link type="text/css" rel="stylesheet" href="libs/gentella/css/custom.css">-->
+        <!--<link type="text/css" rel="stylesheet" href="libs/gentella/css/icheck/flat/green.css">-->
+        <!--<link type="text/css" rel="stylesheet" href="libs/gentella/css/animate.min.css">-->
+        <!--<link type="text/css" rel="stylesheet" href="stylesheets/loginSignup/social-buttons.css">-->
+        <!--missing ionicons-->
+        <link type="text/css" rel="stylesheet" href="bower_components/AdminLTE/dist/css/AdminLTE.min.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/AdminLTE/dist/css/skins/skin-blue.min.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/AdminLTE/plugins/iCheck/square/blue.css">
         <link type="text/css" rel="stylesheet" href="stylesheets/global.css">
-
+        <link type="text/css" rel="stylesheet" href="stylesheets/loginSignup/loginSignup.css">
     </head>
 
-    <body class="nav-md" ng-class="loggedin ? '' : 'loggedinBackground' ">
+    <body class="hold-transition skin-blue sidebar-min">
+        <div class="wrapper">
+            <div ui-view="main"></div>
+        </div>
 
-        <div ui-view="main"></div>
-
-        <script type="text/javascript" src="libs/gentella/js/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/AdminLTE/plugins/iCheck/icheck.min.js"></script>
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
         <script type="text/javascript" src="app/app.modules.js"></script>
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>

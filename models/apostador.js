@@ -5,28 +5,28 @@ var bcrypt = require('bcryptjs');
 //var options = { discriminatorKey: 'kind' };
 
 var apostadorSchema = new mongoose.Schema({
-    local            : {
-        email        : {type: String, unique: true},
-        password     : String
+    local: {
+        name: String,
+        email: {type: String, unique: true},
+        password: String
     },
-    facebook         : {
-        id           : String,
-        token        : String,
-        email        : String,
-        name         : String
+    facebook: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
     },
-    google           : {
-        id           : String,
-        token        : String,
-        email        : String,
-        name         : String
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
     },
     sexo: String,
     nascimento: Date,
     ativo: {type: Boolean, default: true},
-    
-    endereco : {type: mongoose.Schema.Types.ObjectId, ref: 'endereco'},
-    apostas : [{type: mongoose.Schema.Types.ObjectId, ref: 'apostas'}]
+    endereco: {type: mongoose.Schema.Types.ObjectId, ref: 'endereco'},
+    apostas: [{type: mongoose.Schema.Types.ObjectId, ref: 'apostas'}]
 });
 
 //apostadorSchema.pre('save', function(next) {
@@ -50,11 +50,11 @@ var apostadorSchema = new mongoose.Schema({
 //    });
 //});
 
-apostadorSchema.methods.validPassword = function(password, done) {
+apostadorSchema.methods.validPassword = function (password, done) {
     return bcrypt.compareSync(password, this.local.password);
 };
 
-apostadorSchema.methods.generateHash = function(password) {
+apostadorSchema.methods.generateHash = function (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 

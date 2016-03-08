@@ -5,8 +5,7 @@ angular.module('novusbet.components.auth.AuthController', []).controller('AuthCo
     ctrl.signupModel = {};
     ctrl.loginModel = {};
     
-    ctrl.animateLogin = false;
-    ctrl.animateSignup = false;
+    ctrl.showLoginForm = true;
     
     ctrl.signup = function () {
         AuthService.signUp(ctrl.signupModel.email, ctrl.signupModel.password)

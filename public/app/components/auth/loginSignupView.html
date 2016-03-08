@@ -1,4 +1,4 @@
-<div id="wrapper" class="loginSignup">
+<!--<div id="wrapper" class="loginSignup">
     <div id="login" class="animated fadeInLeft" ng-show="!animatedLogin">
         <form id="loginForm" novalidate="novalidate" ng-submit="ctrl.login()">
             <h2 class="text-center">Login</h2>
@@ -72,4 +72,12 @@
         </div>
     </div>
 
+</div>-->
+<div class="login-box">
+    <div class="login-logo">
+        <a href="/index.html" id="login-logo"><b>Novus</b>bet</a>
+    </div>
+    <div ng-include="'app/components/auth/loginFormView.html'" ng-if="ctrl.showLoginForm"></div> 
+    <div ng-include="'app/components/auth/registerFormView.html'" ng-if="!ctrl.showLoginForm"></div> 
 </div>
+

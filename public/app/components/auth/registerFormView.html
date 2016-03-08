@@ -1,0 +1,35 @@
+<div class="register-box-body">
+    <p class="login-box-msg">Fazer cadastro</p>
+
+    <form id="signupForm" name="signupForm" novalidate="novalidate" ng-submit="ctrl.signup()">
+        <div class="form-group has-feedback">
+            <input type="email" class="form-control" placeholder="Email" ng-model="ctrl.signupModel.email" 
+                       ng-model-options='{updateOn: blur, debounce: 0, allowInvalid: true}' required unique-email-checker>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Senha" ng-model="ctrl.signupModel.password" 
+                       ng-minlength="6" ng-maxlength="30" ng-model-options="{allowInvalid: true}" required >
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Confirme a senha" ng-model="ctrl.signupModel.confirmPassword" ng-minlength="6" 
+                       ng-maxlength="30" ng-model-options="{allowInvalid: true}" confirm-password="ctrl.signupModel.password" required>
+            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 pull-right">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Cadastrar</button>
+            </div>
+            <!-- /.col -->
+        </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+        <p> - OU -</p>
+        <a href="auth/facebook" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Entrar com facebook</a>
+        <a href="auth/google" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google"></i> Entrar com Google+</a>
+    </div>
+
+    <a href="#" class="text-center" ng-click="ctrl.showLoginForm = !ctrl.showLoginForm">Já sou cadastrado</a>
+</div>
