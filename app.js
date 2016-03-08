@@ -11,7 +11,9 @@ var session = require('express-session');
 //var routes = require('./routes/index');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/novusbet', function(err){
+//'mongodb://<dbuser>:<dbpassword>@ds053305.mlab.com:53305/novusbet'
+//'mongodb://localhost/novusbet'
+mongoose.connect('mongodb://novusbet:novusbet16@ds053305.mlab.com:53305/novusbet', function(err){
     if(err){
         console.log('connection error', err);
     }else{
