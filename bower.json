@@ -12,9 +12,9 @@
     "angular-ui-router": "ui-router#^0.2.18",
     "font-awesome": "fontawesome#^4.5.0",
     "angular-auto-validate": "^1.19.3",
-    "angular-animate": "^1.5.0",
-    "ngFloatingLabels": "angular-floating-labels#*",
-    "AdminLTE": "admin-lte#^2.3.2"
+    "AdminLTE": "admin-lte#^2.3.2",
+    "angular-bootstrap": "^1.2.4",
+    "animate.css": "^3.5.1"
   },
   "devDependencies": {}
 }

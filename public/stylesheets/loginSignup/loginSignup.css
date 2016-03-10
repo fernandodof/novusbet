@@ -1,11 +1,26 @@
-#social-butons{
-    margin-top: 20px;
+#login-box{
+    background-color: #F7F7F7;
+    margin-top: 5%;
 }
 
-#sign-in-with{
-    font-size: 15px;
+#login-logo-box{
+    height: 50px;
 }
 
 #login-logo{
-    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+#login-logo span{
+    font-weight: normal;
+}
+
+.login-box-msg{
+    margin-bottom: 20px;
+}
+
+.social-auth-links {
+    margin-bottom: 10px;
 }
