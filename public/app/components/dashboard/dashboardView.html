@@ -1,1 +1,4 @@
-<div ng-include="'app/components/dashboard/apostadorMenuView.html'"></div>
+<div id="wrapper" class="active" ng-class="ctrl.sidebarToggle ? 'active' : ''">
+    <div ng-include="'app/components/dashboard/apostadorMenuView.html'"></div>
+    <div ng-include="'app/components/dashboard/apostadorContentView.html'"></div>
+</div>

@@ -20,7 +20,35 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
                         controllerAs: 'ctrl'
                     }
                 }
-            });
+            })
+            .state('profile', {
+                url: '/profile',
+                parent: 'dashboard',
+                views: {
+                    dashboardContent: {
+                        templateUrl: 'app/components/dashboard/apostadorProfileView.html'
+                    }
+                }
+            })
+            .state('apostas', {
+                url: '/apostas',
+                parent: 'dashboard',
+                views: {
+                    dashboardContent: {
+                        templateUrl: 'app/components/dashboard/apostadorApostasView.html'
+                    }
+                }
+            })
+            .state('resultados', {
+                url: '/resultados',
+                parent: 'dashboard',
+                views: {
+                    dashboardContent: {
+                        templateUrl: 'app/components/dashboard/apostadorResultadosView.html'
+                    }
+                }
+            })
+            ;
 
     $urlRouterProvider.otherwise('/');
 
