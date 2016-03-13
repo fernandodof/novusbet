@@ -16,8 +16,12 @@ var app = angular.module('novusbet', [
     'novusbet.components.auth.AuthService',
     
      //Dashboard
-    'novusbet.components.dashboard.DashboardController',
+    'novusbet.components.dashboard.menu.menuComponent',
     
     //Dashboard / Profile
-    'novusbet.components.dashboard.ProfileController'
+    'novusbet.components.dashboard.menu.ProfileComponent',
+    
+    'novusbet.components.dashboard.menu.ApostasComponent',
+    
+    'novusbet.components.dashboard.menu.ResultadosComponent'
 ]);

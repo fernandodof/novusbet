@@ -1,28 +1,35 @@
-angular.module('novusbet.components.dashboard.DashboardController', []).controller('DashboardController', function ($scope, $state) {
-    ctrl = this;
+(function () {
+    angular.module('novusbet.components.dashboard.DashboardController', []).controller('DashboardController', dashboardController);
 
-    ctrl.sidebarToggle = true;
+    dashboardController.$inject = ['$scope','$state'];
 
-    var mobileView = 992;
+    function dashboardController($scope, $state) {
+        ctrl = this;
 
-    ctrl.getWidth = function () {
-        return window.innerWidth;
-    };
+        ctrl.sidebarToggle = true;
 
-    $scope.$watch(ctrl.getWidth, function (newValue) {
-        if (newValue >= mobileView) {
-            ctrl.sidebarToggle = true;
-        } else {
-            ctrl.sidebarToggle = false;
-        }
-    });
+        var mobileView = 992;
 
-    window.onresize = function () {
-        $scope.$apply();
-    };
+        ctrl.getWidth = function () {
+            return window.innerWidth;
+        };
 
-    ctrl.changeState = function (state) {
-        $state.go(state);
-    };
+        $scope.$watch(ctrl.getWidth, function (newValue) {
+            if (newValue >= mobileView) {
+                ctrl.sidebarToggle = true;
+            } else {
+                ctrl.sidebarToggle = false;
+            }
+        });
 
-});
+        window.onresize = function () {
+            $scope.$apply();
+        };
+
+        ctrl.changeState = function (state) {
+            $state.go(state);
+        };
+
+    }
+
+})();

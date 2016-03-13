@@ -15,9 +15,7 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
                 url: '/dashboard',
                 views: {
                     main: {
-                        templateUrl: 'app/components/dashboard/dashboardView.html',
-                        controller: 'DashboardController',
-                        controllerAs: 'ctrl'
+                        templateUrl: 'app/components/dashboard/dashboardView.html'
                     }
                 }
             })
