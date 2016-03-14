@@ -14,13 +14,19 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
             .state('dashboard', {
                 url: '/dashboard',
                 views: {
+                    navbars:{
+                        templateUrl: 'app/shared/navbars/navbars.html'
+                    },
+                    sidebarDashboard:{
+                        templateUrl: 'app/components/dashboard/menu/menuComponentView.html'
+                    },
                     main: {
                         templateUrl: 'app/components/dashboard/dashboardView.html'
                     }
                 }
             })
-            .state('profile', {
-                url: '/profile',
+            .state('perfil', {
+                url: '/perfil',
                 parent: 'dashboard',
                 views: {
                     dashboardContent: {

@@ -15,39 +15,10 @@
         };
     }
 
-    menuCtrl.$inject = ['$scope', '$state'];
+    menuCtrl.$inject = [];
 
-    function menuCtrl($scope, $state) {
+    function menuCtrl() {
         $ctrl = this;
-
-        $ctrl.sidebarToggle = true;
-
-        var mobileView = 992;
-
-        $ctrl.getWidth = function () {
-            return window.innerWidth;
-        };
-
-        $scope.$watch($ctrl.getWidth, function (newValue) {
-            if (newValue >= mobileView) {
-                $ctrl.sidebarToggle = true;
-            } else {
-                $ctrl.sidebarToggle = false;
-            }
-            console.log($ctrl.sidebarToggle);
-        });
-
-        $scope.$watch(function(){return $ctrl.sidebarToggle;}, function (newValue) {
-            console.log(newValue);
-        });
-
-        window.onresize = function () {
-            $scope.$apply();
-        };
-
-        $ctrl.changeState = function (state) {
-            $state.go(state);
-        };
 
     }
 

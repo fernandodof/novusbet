@@ -1,7 +1,8 @@
 var app = angular.module('novusbet', [
     'ui.router',
-    'ui.bootstrap',
+//    'ui.bootstrap',
     'jcs-autoValidate',
+    'mobile-angular-ui',
     
     //Routes config
     'novusbet.config.routes',

@@ -4,27 +4,42 @@
         <title>Novusbet</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link type="text/css" rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css">
+        <link type="text/css" rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css">
         <link type="text/css" rel="stylesheet" href="stylesheets/bootstrap-social.css">
         <link type="text/css" rel="stylesheet" href="bower_components/animate.css/animate.min.css">        
         <link type="text/css" rel="stylesheet" href="stylesheets/global.css">
-        <!--<link type="text/css" rel="stylesheet" href="stylesheets/dashboard/dashboard.css">-->
         <link type="text/css" rel="stylesheet" href="stylesheets/loginSignup/loginSignup.css">
     </head>
 
     <body>
-        <div ui-view="main">
+
+        <div ui-view="sidebarDashboard"></div>
+
+        <div class="app">
+
+            <div ui-view="navbars"></div>
+
+            <div class="app-body">
+                <div class="app-content">
+                    <div ui-view="main"></div>
+                </div>
+
+            </div>
+
         </div>
-       
+
+        <div ui-yield-to="modals"></div>
+
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
         <script type="text/javascript" src="app/app.modules.js"></script>
-        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script type="text/javascript" src="bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
         <script type="text/javascript" src="app/app.routes.js"></script>
 
         <!--validations-->
+        <script type="text/javascript" src="bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
         <script type="text/javascript" src="app/shared/validation/validation-config.js"></script>
 
         <!--auth-->
@@ -35,12 +50,14 @@
 
         <!--Dashboard Menu-->
         <script type="text/javascript" src="app/components/dashboard/menu/menuComponent.js"></script>
-        
-        <!--Dashboard / Profile-->
+
+        <!--Dashboard / Perfil-->
         <script type="text/javascript" src="app/components/dashboard/profile/profileComponent.js"></script>
         
+        <!--Dashboard / Aposta-->
         <script type="text/javascript" src="app/components/dashboard/apostas/apostasComponent.js"></script>
-        
+
+        <!--Dashboard / Resultados-->
         <script type="text/javascript" src="app/components/dashboard/resultados/resultadosComponent.js"></script>
     </body>
 </html>

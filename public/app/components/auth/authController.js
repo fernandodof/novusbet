@@ -48,7 +48,6 @@
             AuthService.login(ctrl.loginModel.email, ctrl.loginModel.password)
                     .success(function (response) {
                         console.log(response);
-                        $rootScope.loggedin = true;
                         if (response.success) {
                             $state.go('dashboard');
                         }
