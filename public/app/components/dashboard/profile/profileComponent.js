@@ -8,10 +8,11 @@
 
     function component() {
         return {
+            restrict: 'E',
+            scope: {},
             templateUrl: templateUrl,
             controller: profileCtrl,
-            controllerAs: '$ctrl',
-            scope: {}
+            controllerAs: '$ctrl'
         };
     }
     
@@ -21,6 +22,11 @@
         $ctrl = this;
 
         $ctrl.test = 'Test';
+        $ctrl.profileForm = {};
+        
+        $ctrl.submit = function(){
+            console.log($ctrl.profileForm.name);    
+        };
     }
 
 })();

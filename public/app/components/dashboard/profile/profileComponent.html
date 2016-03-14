@@ -4,4 +4,13 @@
 <div>
     <h2>Perfil</h2>
     {{$ctrl.test}}
+    <form class="form-horizontal">
+        <div class="form-group">
+            <input class="form-control" ng-model="$ctrl.profileForm.name">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Salvar" ng-click="$ctrl.submit()">
+        </div>
+    </form>
+    
 </div>
