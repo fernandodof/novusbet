@@ -1,16 +1,38 @@
 <div ui-content-for="title">
-  <span>Perfil</span>
+    <span>Perfil</span>
 </div>
 <div>
-    <h2>Perfil</h2>
-    {{$ctrl.test}}
-    <form class="form-horizontal">
-        <div class="form-group">
-            <input class="form-control" ng-model="$ctrl.profileForm.name">
+<!--    <form role="form" class="form-horizontal col-md-6">
+        <fieldset>
+            <legend>Atualizar perfil</legend>
+            <div class="form-group">
+                <input class="form-control" ng-model="$ctrl.profileForm.name">
+            </div>
+        </fieldset>
+        <hr>
+        <button class="btn btn-primary btn-block">Salvar</button>
+        <div ui-content-for="navbarAction">
+            <a class="btn">Salvar</a>
         </div>
-        <div class="form-group">
-            <input type="submit" value="Salvar" ng-click="$ctrl.submit()">
-        </div>
+    </form>-->
+
+    <form role="form" ng-click="$ctrl.submit()">
+        <fieldset>
+            <legend>Login</legend>
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" ng-model="$ctrl.profileForm.name" class="form-control" placeholder="Nome" required="">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" ng-model="$ctrl.profileForm.email" class="form-control" placeholder="Email" required="">
+            </div>
+        </fieldset>
+        <hr>
+
+        <button class="btn btn-primary btn-block" type="submit">Salvar</button>
+
     </form>
-    
+
 </div>
