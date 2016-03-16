@@ -5,9 +5,7 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
                 url: '/',
                 views: {
                     main: {
-                        templateUrl: 'app/components/auth/loginSignupView.html',
-                        controller: 'AuthController',
-                        controllerAs: 'ctrl'
+                        templateUrl: 'app/components/auth/loginSignupView.html'
                     }
                 }
             })

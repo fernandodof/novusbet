@@ -15,11 +15,15 @@
         };
     }
 
-    menuCtrl.$inject = [];
+    menuCtrl.$inject = ['AuthService', '$state'];
 
-    function menuCtrl() {
+    function menuCtrl(AuthService, $state) {
         $ctrl = this;
 
+        $ctrl.logout = function(){
+            AuthService.clearCredentials();
+            $state.go('login');
+        };
     }
 
 })();
