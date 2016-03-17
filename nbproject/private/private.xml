@@ -2,6 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/dashboard/menu/menuComponent.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/auth/authComponent.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/dashboard/profile/profileComponent.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/dashboard/menu/menuComponent.html</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/auth/authComponent.html</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/auth/loginSignupView.html</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/dashboard/menu/menuComponentView.html</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/auth/authController.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/app.modules.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/app.routes.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/index.html</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/app/components/auth/authService.js</file>
+            <file>file:/home/fernando/NetBeansProjects/novusbet/public/templates/navbar.html</file>
+        </group>
     </open-files>
 </project-private>

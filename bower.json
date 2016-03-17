@@ -13,7 +13,8 @@
     "angular-auto-validate": "^1.19.3",
     "animate.css": "^3.5.1",
     "mobile-angular-ui": "^1.2.1",
-    "angular-cookies": "^1.5.0"
+    "angular-cookies": "^1.5.0",
+    "angular-ladda": "^0.3.4"
   },
   "devDependencies": {}
 }

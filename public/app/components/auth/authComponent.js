@@ -1,8 +1,8 @@
 (function () {
-    
+
     var componentName = 'nbAuthView';
     var templateUrl = 'app/components/auth/authComponent.html';
-    
+
     angular.module('novusbet.components.auth.authComponent', [])
             .directive(componentName, component);
 
@@ -15,7 +15,7 @@
             controllerAs: '$ctrl'
         };
     }
-    
+
     authController.$inject = ['$state', 'AuthService'];
 
     function authController($state, AuthService) {
@@ -24,6 +24,7 @@
 
         $ctrl.signupModel = {};
         $ctrl.loginModel = {};
+        $ctrl.isLoggingIn = false;
 
         $ctrl.showLoginForm = true;
 
@@ -59,16 +60,20 @@
         };
 
         $ctrl.login = function () {
+            $ctrl.isLoggingIn = true;
             AuthService.login($ctrl.loginModel.email, $ctrl.loginModel.password)
                     .success(function (response) {
                         console.log(response);
                         if (response.success) {
-                            AuthService.setCredentials(response.data.local.email, response.data.id);
+                            AuthService.setCredentials(response.data.local.email, response.data.id, response.data.token);
                             $state.go('dashboard');
                         }
-                    }).error(function (response) {
-                console.log(response);
-            });
+                        $ctrl.isLoggingIn = false;
+                    })
+                    .error(function (response) {
+                        console.log(response);
+                        $ctrl.isLoggingIn = false;
+                    });
         };
     }
 

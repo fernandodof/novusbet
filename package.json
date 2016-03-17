@@ -15,7 +15,9 @@
     "ejs": "^2.4.1",
     "express": "~4.13.1",
     "express-session": "^1.13.0",
+    "jade": "~1.11.0",
     "jsonschema": "^1.0.3",
+    "jsonwebtoken": "^5.7.0",
     "less-middleware": "1.0.x",
     "lodash": "^4.1.0",
     "moment": "^2.11.1",
@@ -26,7 +28,6 @@
     "passport-facebook": "^2.1.0",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
-    "serve-favicon": "~2.3.0",
-    "jade": "~1.11.0"
+    "serve-favicon": "~2.3.0"
   }
 }

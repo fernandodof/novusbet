@@ -22,7 +22,18 @@
 
         $ctrl.logout = function(){
             AuthService.clearCredentials();
-            $state.go('login');
+                AuthService.logout();
+                $state.go('login');
+        };
+        
+        $ctrl.test = function(){
+            AuthService.test()
+                .success(function (response){
+                    console.log(response);
+                })
+                .error(function (response){
+                    console.log(response);
+                });
         };
     }
 

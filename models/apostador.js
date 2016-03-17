@@ -25,6 +25,7 @@ var apostadorSchema = new mongoose.Schema({
     sexo: String,
     nascimento: Date,
     ativo: {type: Boolean, default: true},
+    token: String,
     endereco: {type: mongoose.Schema.Types.ObjectId, ref: 'endereco'},
     apostas: [{type: mongoose.Schema.Types.ObjectId, ref: 'apostas'}]
 });

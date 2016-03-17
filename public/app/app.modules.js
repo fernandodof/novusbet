@@ -2,6 +2,9 @@ var app = angular.module('novusbet', [
     'ui.router',
     'jcs-autoValidate',
     'mobile-angular-ui',
+    'ngStorage',
+    'ngCookies',
+    'angular-ladda',
     //Routes config
     'novusbet.config.routes',
     //Validation config
@@ -11,7 +14,6 @@ var app = angular.module('novusbet', [
     'novusbet.components.auth.ConfirmPasswordDirective',
     'novusbet.components.auth.UniqueEmailCheckerDirective',
     'novusbet.components.auth.AuthService',
-    'ngCookies',
     //Dashboard
     'novusbet.components.dashboard.menu.menuComponent',
     //Dashboard / Profile
@@ -29,14 +31,20 @@ var app = angular.module('novusbet', [
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
         // redirect to login page if not logged in and trying to access a restricted page
-        var publicStates = ['login']; 
-        var restrictedPage = publicStates.indexOf(toState.name) === -1;
         var loggedIn = $rootScope.globals.currentUser;
-        console.log(restrictedPage, loggedIn, $rootScope.globals.currentUser, publicStates.indexOf(toState.name));
 
-        if (restrictedPage && !loggedIn) {
-            console.log('redirect');
-            $state.go('login');
+        if (toState.authenticate && !loggedIn) {
+            //not authenticated
+            console.log('please login');
+            $state.transitionTo("login");
+            event.preventDefault();
         }
+
+    });
+}).config(function (laddaProvider) {
+    laddaProvider.setOption({
+        style: 'expand-right',
+        spinnerSize: 25,
+        spinnerColor: '#ffffff'
     });
 });

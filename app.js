@@ -11,12 +11,12 @@ var session = require('express-session');
 //var routes = require('./routes/index');
 var mongoose = require('mongoose');
 
-//'mongodb://<dbuser>:<dbpassword>@ds053305.mlab.com:53305/novusbet'
+//'mongodb://novusbet:novusbet16@ds053305.mlab.com:53305/novusbet''
 //'mongodb://localhost/novusbet'
-mongoose.connect('mongodb://novusbet:novusbet16@ds053305.mlab.com:53305/novusbet', function(err){
-    if(err){
+mongoose.connect('mongodb://localhost/novusbet', function (err) {
+    if (err) {
         console.log('connection error', err);
-    }else{
+    } else {
         console.log('connection successful');
     }
 });
@@ -29,7 +29,7 @@ var times = require('./routes/times');
 var campeonatos = require('./routes/campeonatos');
 var rodadas = require('./routes/rodadas');
 var jogos = require('./routes/jogos');
-var auth = require('./routes/auth');
+//var auth = require('./routes/auth');
 
 var app = express();
 
@@ -46,7 +46,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({ secret: 'novusbetsessionsecret' })); // session secret
+app.use(session({secret: 'novusbetsessionsecret'})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -57,18 +57,18 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 //  next();      
 //});  
 
-app.use('/apostadores', apostadores);
-app.use('/campeonatos', campeonatos);
-app.use('/times', times);
-app.use('/rodadas', rodadas);
-app.use('/jogos', jogos);
+app.use('/v1/apostadores', ensureAuthorized, apostadores);
+app.use('/v1/campeonatos', campeonatos);
+app.use('/v1/times', times);
+app.use('/v1/rodadas', rodadas);
+app.use('/v1/jogos', jogos);
 
 // routes ======================================================================
 require('./routes/auth.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 app.set('port', process.env.PORT || 3000);
-var server = app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + server.address().port);
+var server = app.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + server.address().port);
 });
 
 // catch 404 and forward to error handler
@@ -105,5 +105,19 @@ app.use(function (err, req, res, next) {
 app.get('/', function (req, res) {
     res.sendfile('public/index.html');
 });
+
+function ensureAuthorized(req, res, next) {
+    var bearerToken;
+    var bearerHeader = req.headers["Authorization"];
+    console.log(bearerHeader);
+    if (typeof bearerHeader !== 'undefined') {
+        var bearer = bearerHeader.split(" ");
+        bearerToken = bearer[1];
+        req.token = bearerToken;
+        next();
+    } else {
+        res.send(403);
+    }
+}
 
 module.exports = app;

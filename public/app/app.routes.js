@@ -7,7 +7,8 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
                     main: {
                         templateUrl: 'app/components/auth/loginSignupView.html'
                     }
-                }
+                },
+                authenticate: false
             })
             .state('dashboard', {
                 url: '/dashboard',
@@ -21,7 +22,8 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
                     main: {
                         templateUrl: 'app/components/dashboard/dashboardView.html'
                     }
-                }
+                },
+                authenticate: true
             })
             .state('perfil', {
                 url: '/perfil',
@@ -30,7 +32,8 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
                     dashboardContent: {
                         templateUrl: 'app/components/dashboard/apostadorProfileView.html'
                     }
-                }
+                },
+                authenticate: true
             })
             .state('apostas', {
                 url: '/apostas',
@@ -39,7 +42,8 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
                     dashboardContent: {
                         templateUrl: 'app/components/dashboard/apostadorApostasView.html'
                     }
-                }
+                },
+                authenticate: true
             })
             .state('resultados', {
                 url: '/resultados',
@@ -48,9 +52,9 @@ angular.module('novusbet.config.routes', []).config(function ($stateProvider, $u
                     dashboardContent: {
                         templateUrl: 'app/components/dashboard/apostadorResultadosView.html'
                     }
-                }
-            })
-            ;
+                },
+                authenticate: true
+            });
 
     $urlRouterProvider.otherwise('/');
 

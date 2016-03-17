@@ -1,26 +1,26 @@
 (function () {
 
-    angular.module('novusbet.components.auth.AuthService', []).service('AuthService', function ($http, $rootScope, $cookieStore) {
+    angular.module('novusbet.components.auth.AuthService', []).service('AuthService', function ($http, $rootScope, $cookieStore, $localStorage) {
         var self = {
             signUp: function (email, password) {
-                return $http.post('/signup', {
+                return $http.post('/v1/auth/signup', {
                     email: email,
                     password: password
                 });
             },
             logout: function () {
-                return $http.get('logout', {});
+                return $http.get('/v1/auth/logout', {});
             },
             checkEmail: function (email) {
-                return $http.get('apostadores/email/' + email, {});
+                return $http.get('/v1/auth/apostadores/email/' + email, {});
             },
             login: function (email, password) {
-                return $http.post('login', {
+                return $http.post('/v1/auth/login', {
                     email: email,
                     password: password
                 });
             },
-            setCredentials: function (userEmail, id) {
+            setCredentials: function (userEmail, id, token) {
                 var authdata = Base64.encode(userEmail + ':' + id);
 
                 $rootScope.globals = {
@@ -30,13 +30,19 @@
                     }
                 };
 
-                $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
+                $http.defaults.headers.common['Authorization'] = 'Basic ' + token;
+                console.log(token);
+                $localStorage.token = token;
                 $cookieStore.put('globals', $rootScope.globals);
             },
             clearCredentials: function () {
                 $rootScope.globals = {};
                 $cookieStore.remove('globals');
+                $localStorage.$reset();
                 $http.defaults.headers.common.Authorization = 'Basic';
+            },
+            test: function (){
+                return $http.get('v1/apostadores', {});
             }
         };
 
