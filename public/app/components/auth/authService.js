@@ -1,6 +1,10 @@
 (function () {
 
-    angular.module('novusbet.components.auth.AuthService', []).service('AuthService', function ($http, $rootScope, $cookieStore, $localStorage) {
+    angular.module('novusbet.components.auth.AuthService', []).service('AuthService', authService);
+
+    authService.$inject = ['$http', '$rootScope', '$cookieStore', '$localStorage', '$window'];
+
+    function authService($http, $rootScope, $cookieStore, $localStorage, $window) {
         var self = {
             signUp: function (email, password) {
                 return $http.post('/v1/auth/signup', {
@@ -8,9 +12,9 @@
                     password: password
                 });
             },
-            logout: function () {
-                return $http.get('/v1/auth/logout', {});
-            },
+//            logout: function () {
+//                return $http.get('/v1/auth/logout', {});
+//            },
             checkEmail: function (email) {
                 return $http.get('/v1/auth/apostadores/email/' + email, {});
             },
@@ -20,11 +24,34 @@
                     password: password
                 });
             },
+            parseJwt: function (token) {
+                var base64Url = token.split('.')[1];
+                var base64 = base64Url.replace('-', '+').replace('_', '/');
+                return JSON.parse($window.atob(base64));
+            },
+            saveToken: function (token) {
+                $window.localStorage['jwtToken'] = token;
+            },
+            getToken: function () {
+                return $window.localStorage['jwtToken'];
+            },
+            isAuthed: function () {
+                var token = self.getToken();
+                if (token) {
+                    var params = self.parseJwt(token);
+                    return Math.round(new Date().getTime() / 1000) <= params.exp;
+                } else {
+                    return false;
+                }
+            },
+            logout: function() {
+                $window.localStorage.removeItem('jwtToken');
+            },
             setCredentials: function (userEmail, id, token) {
                 var authdata = Base64.encode(userEmail + ':' + id);
 
                 $rootScope.globals = {
-                    currentUser:{
+                    currentUser: {
                         userEmail: userEmail,
                         authdata: authdata
                     }
@@ -41,7 +68,7 @@
                 $localStorage.$reset();
                 $http.defaults.headers.common.Authorization = 'Basic';
             },
-            test: function (){
+            test: function () {
                 return $http.get('v1/apostadores', {});
             }
         };
@@ -125,6 +152,6 @@
         };
 
         return self;
-    });
+    }
 
 })();

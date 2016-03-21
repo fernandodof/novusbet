@@ -1,4 +1,4 @@
-var app = angular.module('novusbet', [
+angular.module('novusbet', [
     'ui.router',
     'jcs-autoValidate',
     'mobile-angular-ui',
@@ -14,6 +14,7 @@ var app = angular.module('novusbet', [
     'novusbet.components.auth.ConfirmPasswordDirective',
     'novusbet.components.auth.UniqueEmailCheckerDirective',
     'novusbet.components.auth.AuthService',
+    'novusbet.components.auth.authInterceptor',
     //Dashboard
     'novusbet.components.dashboard.menu.menuComponent',
     //Dashboard / Profile
@@ -43,8 +44,10 @@ var app = angular.module('novusbet', [
     });
 }).config(function (laddaProvider) {
     laddaProvider.setOption({
-        style: 'expand-right',
+        style: 'expanright',
         spinnerSize: 25,
-        spinnerColor: '#ffffff'
+        spinnerColor: '#FFFFFF'
     });
+}).config(function ($httpProvider) {
+    //$httpProvider.interceptors.push('authInterceptor');
 });

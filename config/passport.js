@@ -57,7 +57,13 @@ module.exports = function (passport) {
                         // all is well, return apostador
                         else {
                             //generating token
-                            var token = generateToken(apostador);
+                            
+                            var entityToken = {
+                                name: apostador.local.name,
+                                email: apostador.local.email
+                            };
+                            
+                            var token = generateToken(entityToken);
 
                             apostador.token = token;
 

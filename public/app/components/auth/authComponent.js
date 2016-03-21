@@ -62,18 +62,27 @@
         $ctrl.login = function () {
             $ctrl.isLoggingIn = true;
             AuthService.login($ctrl.loginModel.email, $ctrl.loginModel.password)
-                    .success(function (response) {
-                        console.log(response);
-                        if (response.success) {
-                            AuthService.setCredentials(response.data.local.email, response.data.id, response.data.token);
-                            $state.go('dashboard');
+                    .then(function (response) {
+                        var token = response.data ? response.data.token : null;
+                        if (token) {
+                            console.log('JWT:', token);
                         }
-                        $ctrl.isLoggingIn = false;
-                    })
-                    .error(function (response) {
-                        console.log(response);
+                        console.log(response.data.message);
                         $ctrl.isLoggingIn = false;
                     });
+//            AuthService.login($ctrl.loginModel.email, $ctrl.loginModel.password)
+//                    .success(function (response) {
+//                        console.log(response);
+//                        if (response.success) {
+//                            AuthService.setCredentials(response.data.local.email, response.data.id, response.data.token);
+//                            $state.go('dashboard');
+//                        }
+//                        $ctrl.isLoggingIn = false;
+//                    })
+//                    .error(function (response) {
+//                        console.log(response);
+//                        $ctrl.isLoggingIn = false;
+//                    });
         };
     }
 
