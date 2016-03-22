@@ -2,9 +2,10 @@
 
     angular.module('novusbet.components.auth.AuthService', []).service('AuthService', authService);
 
-    authService.$inject = ['$http', '$rootScope', '$cookieStore', '$localStorage', '$window'];
+    authService.$inject = ['$injector', '$rootScope', '$cookieStore', '$localStorage', '$window'];
 
-    function authService($http, $rootScope, $cookieStore, $localStorage, $window) {
+    function authService($injector, $rootScope, $cookieStore, $localStorage, $window) {
+        var $http = $injector.get('$http');
         var self = {
             signUp: function (email, password) {
                 return $http.post('/v1/auth/signup', {

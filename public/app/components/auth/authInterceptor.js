@@ -2,9 +2,10 @@
 
     angular.module('novusbet.components.auth.authInterceptor', []).factory('authInterceptor', authInterceptor);
 
-    authInterceptor.$inject = ['AuthService'];
+    authInterceptor.$inject = ['$injector'];
 
-    function authInterceptor(AuthService) {
+    function authInterceptor($injector) {
+        var AuthService = $injector.get('AuthService');
         return {
             // automatically attach Authorization header
             request: function (config) {

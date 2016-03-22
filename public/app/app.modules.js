@@ -10,10 +10,10 @@ angular.module('novusbet', [
     //Validation config
     'novusbet.shared.validation.ValidationConfig',
     //Auth
+    'novusbet.components.auth.AuthService',
     'novusbet.components.auth.authComponent',
     'novusbet.components.auth.ConfirmPasswordDirective',
     'novusbet.components.auth.UniqueEmailCheckerDirective',
-    'novusbet.components.auth.AuthService',
     'novusbet.components.auth.authInterceptor',
     //Dashboard
     'novusbet.components.dashboard.menu.menuComponent',
@@ -23,16 +23,16 @@ angular.module('novusbet', [
     'novusbet.components.dashboard.menu.ApostasComponent',
     //Dashboard / Resultados
     'novusbet.components.dashboard.menu.ResultadosComponent'
-]).run(function ($rootScope, $http, $cookieStore, $state) {
+]).run(function ($rootScope, $http, $cookieStore, $state, AuthService) {
     // keep user logged in after page refresh
-    $rootScope.globals = $cookieStore.get('globals') || {};
-    if ($rootScope.globals.currentUser) {
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-    }
+//    $rootScope.globals = $cookieStore.get('globals') || {};
+//    if ($rootScope.globals.currentUser) {
+//        $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+//    }
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
         // redirect to login page if not logged in and trying to access a restricted page
-        var loggedIn = $rootScope.globals.currentUser;
+        var loggedIn = AuthService.getToken();
 
         if (toState.authenticate && !loggedIn) {
             //not authenticated

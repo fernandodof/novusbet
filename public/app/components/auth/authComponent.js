@@ -62,12 +62,18 @@
         $ctrl.login = function () {
             $ctrl.isLoggingIn = true;
             AuthService.login($ctrl.loginModel.email, $ctrl.loginModel.password)
-                    .then(function (response) {
+                    .success(function (response) {
                         var token = response.data ? response.data.token : null;
                         if (token) {
                             console.log('JWT:', token);
+                            AuthService.saveToken(token);
                         }
                         console.log(response.data.message);
+                        $ctrl.isLoggingIn = false;
+                        $state.go('dashboard');
+                    })
+                    .error(function (){
+                        console.log(response);
                         $ctrl.isLoggingIn = false;
                     });
 //            AuthService.login($ctrl.loginModel.email, $ctrl.loginModel.password)
