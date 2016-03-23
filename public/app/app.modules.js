@@ -32,9 +32,9 @@ angular.module('novusbet', [
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
         // redirect to login page if not logged in and trying to access a restricted page
-        var loggedIn = AuthService.getToken();
-
-        if (toState.authenticate && !loggedIn) {
+        var token = AuthService.getToken();
+        console.log(token);
+        if (toState.authenticate && !token) {
             //not authenticated
             console.log('please login');
             $state.transitionTo("login");
